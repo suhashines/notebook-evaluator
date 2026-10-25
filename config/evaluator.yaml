@@ -1,0 +1,38 @@
+project_root: "."
+inputs:
+  notebooks_dir: "notebooks"
+  rubric_file: "rubric.md"
+  solution_file: "solution.ipynb"
+
+grading:
+  batch_size: 1
+  execute_notebooks: false
+  verify_each_submission: true
+  minimum_mark_increment: 0.5
+  missing_task_policy: "zero_when_absence_is_clear"
+  missing_output_policy: "no_penalty"
+  borderline_policy: "manual_review"
+  skip_completed: true
+  max_retries: 2
+  judge_temperature: 0
+  verifier_temperature: 0
+
+llm:
+  provider: "openai_compatible"
+  base_url_env: "LLM_BASE_URL"
+  api_key_env: "LLM_API_KEY"
+  model_env: "LLM_MODEL"
+  timeout_env: "LLM_TIMEOUT_SECONDS"
+  max_output_tokens: 6000
+  # OpenAI-compatible API. If Hermes must mediate calls, implement a supported
+  # adapter for the installed Hermes version rather than guessing CLI flags.
+
+output:
+  directory: "results"
+  csv_file: "grades.csv"
+  xlsx_file: "grades.xlsx"
+
+artifacts:
+  normalized_dir: "artifacts/normalized"
+  records_dir: "artifacts/grading_records"
+  logs_dir: "artifacts/logs"
